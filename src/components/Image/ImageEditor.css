@@ -1,0 +1,7 @@
+.tui-image-editor-header {
+    display: none;
+}
+
+.tui-image-editor-container .tui-image-editor-main {
+    top: 10px;
+}
