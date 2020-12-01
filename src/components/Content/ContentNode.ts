@@ -219,8 +219,14 @@ export class ContentNode {
     return node;
   }
 
-  static fromPath(id: string, path: string, element: ReactNode) {
-    const node = new ContentNode(id, ContentType.Node, id, path);
+  static fromPath(
+    id: string,
+    type: string,
+    name: string,
+    path: string,
+    element: ReactNode,
+  ) {
+    const node = new ContentNode(id, type, name, path);
     node.element = element;
     return node;
   }

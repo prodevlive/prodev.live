@@ -1,8 +1,10 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import { useHistory } from 'react-router-dom';
 import { List, ListItem, ListItemText, Collapse } from '@material-ui/core';
+import FolderOpenOutlinedIcon from '@material-ui/icons/FolderOpenOutlined';
+import FolderOutlinedIcon from '@material-ui/icons/FolderOutlined';
 import FolderIcon from '@material-ui/icons/Folder';
-import FolderOpenIcon from '@material-ui/icons/FolderOpen';
+import NoteOutlinedIcon from '@material-ui/icons/NoteOutlined';
 import NoteIcon from '@material-ui/icons/Note';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
@@ -12,11 +14,13 @@ import { ContentType } from './ContentType';
 interface TextIndexProps {
   content: ContentNode;
   disabled?: boolean;
+  selectable?: boolean;
 }
 
 export const ContentIndex: FunctionComponent<TextIndexProps> = ({
   content,
   disabled,
+  selectable,
 }: TextIndexProps) => {
   const history = useHistory();
   const renderNode = ({
@@ -29,43 +33,62 @@ export const ContentIndex: FunctionComponent<TextIndexProps> = ({
     selected,
     expanded,
   }: ContentNode) => {
-    if (history.location.pathname.includes(path)){
+    const { pathname } = history.location;
+    // eslint-disable-next-line no-debugger
+    debugger;
+    if (pathname === path) {
+      selected = true;
+    }
+    if (pathname.includes(path)) {
       expanded = true;
     }
     if (visible) {
       return (
         <List key={`${key}-list`}>
-          <ListItem
-            key={`${key}-list-item`}
-            button
-            onClick={() => {
-              history.push(path);
-            }}
-            disabled={disabled}
-          >
-            {renderIcon(type, expanded)}
-            <ListItemText
-              primary={name}
-              style={{ paddingLeft: '8px' }}
-            />
-            {renderCheck(selected)}
-          </ListItem>
+          <a href={path}>
+            <ListItem
+              key={`${key}-list-item`}
+              button
+              disabled={disabled}
+            >
+              {renderIcon(type, selected, expanded)}
+              <ListItemText
+                primary={name}
+                style={{ paddingLeft: '8px' }}
+              />
+              {renderCheck(selected)}
+            </ListItem>
+          </a>
           {renderNodes(contents, expanded)}
         </List>
       );
     }
     return null;
   };
-  const renderIcon = (type: string, expanded: boolean | undefined) => {
+  const renderIcon = (
+    type: string,
+    selected: boolean | undefined,
+    expanded: boolean | undefined,
+  ) => {
     if (type === ContentType.Root || type === ContentType.Node) {
-      if (!expanded) {
-        return <FolderOpenIcon />;
+      if (!selected && !expanded) {
+        return <FolderOutlinedIcon />;
+      }
+      if (expanded && !selected) {
+        return <FolderOpenOutlinedIcon />;
       }
       return <FolderIcon />;
     }
+    if (!selected) {
+      return <NoteOutlinedIcon />;
+    }
     return <NoteIcon />;
+    
   };
   const renderCheck = (selected: boolean | undefined) => {
+    if (!selectable) {
+      return null;
+    }
     if (!selected) {
       return <CheckBoxOutlineBlankIcon />;
     }
