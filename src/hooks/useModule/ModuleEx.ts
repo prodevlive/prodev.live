@@ -11,8 +11,6 @@ export class ModuleEx<T> extends Module {
   result?: DataResult;
   
   load = async (useCache?: boolean) => {
-    // eslint-disable-next-line no-debugger
-    debugger;
     if (!this.data) {
       this.result = DataResult.fromNew(DataStatus.Success, 'No data');
       return this.result;

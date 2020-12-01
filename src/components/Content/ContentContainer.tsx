@@ -3,6 +3,7 @@ import { DockLayout, LayoutBase, TabBase } from 'rc-dock';
 import { Tab, Paper } from '@material-ui/core';
 import 'rc-dock/dist/rc-dock.css';
 import './styles.css';
+import { useHistory } from 'react-router-dom';
 import { ContentNode } from './ContentNode';
 import { ContentType } from './ContentType';
 
@@ -11,6 +12,11 @@ interface TabContainerProp {
 }
 
 export function ContentContainer({ content }: TabContainerProp) {
+  const history = useHistory();
+  const [key, setKey] = useState(`content-container-${history.location.pathname.replace('/', '-')}`);
+  useEffect(()=>{
+    setKey(`content-container-${history.location.pathname.replace('/', '-')}`);
+  }, [history.location.pathname]);
   const [top, left, right, bottom] = [64, 55, 0, 56];
   const [layout, setLayout] = useState<LayoutBase>({
     dockbox: {
@@ -70,6 +76,7 @@ export function ContentContainer({ content }: TabContainerProp) {
   };
   return (
     <DockLayout
+      key={key}
       layout={layout}
       loadTab={loadTab}
       onLayoutChange={newLayout => {

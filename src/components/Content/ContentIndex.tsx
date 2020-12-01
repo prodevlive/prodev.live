@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { List, ListItem, ListItemText, Collapse } from '@material-ui/core';
 import FolderOpenOutlinedIcon from '@material-ui/icons/FolderOpenOutlined';
@@ -23,6 +23,7 @@ export const ContentIndex: FunctionComponent<TextIndexProps> = ({
   selectable,
 }: TextIndexProps) => {
   const history = useHistory();
+  const { pathname } = history.location;
   const renderNode = ({
     key,
     type,
@@ -33,9 +34,6 @@ export const ContentIndex: FunctionComponent<TextIndexProps> = ({
     selected,
     expanded,
   }: ContentNode) => {
-    const { pathname } = history.location;
-    // eslint-disable-next-line no-debugger
-    debugger;
     if (pathname === path) {
       selected = true;
     }
@@ -45,20 +43,21 @@ export const ContentIndex: FunctionComponent<TextIndexProps> = ({
     if (visible) {
       return (
         <List key={`${key}-list`}>
-          <a href={path}>
-            <ListItem
-              key={`${key}-list-item`}
-              button
-              disabled={disabled}
-            >
-              {renderIcon(type, selected, expanded)}
-              <ListItemText
-                primary={name}
-                style={{ paddingLeft: '8px' }}
-              />
-              {renderCheck(selected)}
-            </ListItem>
-          </a>
+          <ListItem
+            key={`${key}-list-item`}
+            disabled={disabled}
+            button
+            onClick={()=>{
+              history.push(path);
+            }}
+          >
+            {renderIcon(type, selected, expanded)}
+            <ListItemText
+              primary={name}
+              style={{ paddingLeft: '8px' }}
+            />
+            {renderCheck(selected)}
+          </ListItem>
           {renderNodes(contents, expanded)}
         </List>
       );

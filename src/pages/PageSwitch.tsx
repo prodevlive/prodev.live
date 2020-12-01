@@ -9,7 +9,8 @@ import { PagePaths } from './PageEnum';
 
 export const PageSwitch: FunctionComponent = () => {
   const history = useHistory();
-  if (history.location.pathname === '/'){
+  const { pathname } = history.location;
+  if (pathname === '/') {
     history.push(PagePaths.Home);
   }
   return (

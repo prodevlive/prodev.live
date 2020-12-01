@@ -20,8 +20,6 @@ export const ContentTab: FunctionComponent<ContentTabProps> = ({
   if (!content || !content.contents || !content.contents.length){
     return null;
   }
-  // eslint-disable-next-line no-debugger
-  debugger;
   return (
     <div>
       <Tabs
