@@ -1,8 +1,8 @@
 
 # Overview
 
-<InlineImage alt="Amplify Init" asset="AmplifyInit" />
-<InlineImage alt="Amplify Configure" asset="AmplifyConfigure" clip />
+## [Deployment](/text/deployment)
+How to deploy a prodev site.
 
-## Deployment
-## Development
+## [Development](/text/development)
+How to develop a prodev site.
