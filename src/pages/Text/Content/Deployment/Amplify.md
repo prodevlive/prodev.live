@@ -34,7 +34,7 @@ This would update/create the AWS Profile in your local machine
 ? Profile Name: [AWS PROFILE NAME]
 ```
 
-<InlineImage alt="Amplify Configure" asset="AmplifyConfigure" clip />
+<TextImage title="Amplify Configure" asset="AmplifyConfigure" clip />
 
 ## initialization
 ```console

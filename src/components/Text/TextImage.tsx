@@ -1,8 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
-import './InlineImageViewer.css';
 
-export interface InlineImageViewerProps {
-  title?: string;
+export interface TextImageProps {
+  title: string;
   alt?: string;
   src?: string;
   asset?: string;
@@ -10,14 +9,14 @@ export interface InlineImageViewerProps {
   clip?: boolean;
 }
 
-export const InlineImageViewer: FunctionComponent<InlineImageViewerProps> = ({
+export const TextImage: FunctionComponent<TextImageProps> = ({
   title,
-  alt,
   src,
   asset,
   assets,
   clip,
-}: InlineImageViewerProps) => {
+  alt,
+}: TextImageProps) => {
   if (asset && assets) {
     src = assets.get(asset);
   }
@@ -25,9 +24,9 @@ export const InlineImageViewer: FunctionComponent<InlineImageViewerProps> = ({
   const handleClick = () => {
     setFullSize(!fullSize);
   };
-  let className = 'inline-image-viewer';
+  let className = 'text-image';
   if (clip){
-    className = !fullSize ? 'inline-image-viewer-clip' : 'inline-image-viewer-show';
+    className = !fullSize ? 'text-image-clip' : 'text-image-show';
   }
   return (
     <div
@@ -40,7 +39,7 @@ export const InlineImageViewer: FunctionComponent<InlineImageViewerProps> = ({
       <img
         title={title}
         src={src}
-        alt={alt}
+        alt={alt || title}
       />
     </div>
   );

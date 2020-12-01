@@ -1,0 +1,60 @@
+
+.text-image {
+    position: relative;
+    padding: 4px;
+    box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.5);
+    background-color: black;
+    overflow: hidden;
+}
+
+.text-image-show {
+    position: relative;
+    padding: 4px;
+    box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.5);
+    max-height: 2500px;
+    transition: max-height 0.5s linear;
+    background-color: black;
+    overflow: hidden;
+}
+
+.text-image-show:hover:before {
+    position: absolute;
+    content: 'click to hide';
+    color:yellow;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    background: rgba(10, 10, 10, 0.5);
+    box-sizing: border-box;
+}
+
+.text-image-clip {
+    position: relative;
+    padding: 4px;
+    box-shadow: 0px 0px 4px 2px rgba(0,0,0,0.5);
+    max-height: 100px;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+    background-color: black;
+}
+
+.text-image-clip:hover:before {
+    position: absolute;
+    content: 'click to show';
+    color:yellow;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    background: rgba(10, 10, 10, 0.5);
+    box-sizing: border-box;
+}
+
+.text-link {
+    cursor: pointer;
+}
+
+.text-link:hover {
+    background-color: lightgray;
+}

@@ -1,7 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { FileEx } from 'hooks/useModule/FileModule/FileEx';
 import Markdown from 'markdown-to-jsx';
-import { InlineImageViewer } from '../Image';
+import { TextImage } from './TextImage';
+import { TextLink } from './TextLink';
+import './TextViewer.css';
 
 export interface TextViewerProps {
   md?: string;
@@ -14,19 +16,19 @@ export const TextViewer: FunctionComponent<TextViewerProps> = ({
   file,
   assets,
 }: TextViewerProps) => {
+  const overrides = {
+    TextLink,
+    TextImage: {
+      component: TextImage,
+      props: {
+        assets,
+      },
+    },
+  };
   if (md) {
     return (
       <Markdown
-        options={{
-          overrides: {
-            InlineImage: {
-              component: InlineImageViewer,
-              props: {
-                assets,
-              },
-            },
-          },
-        }}
+        options={{ overrides }}
       >{md}
       </Markdown>);
   }

@@ -1,8 +1,8 @@
 
 # Overview
 
-## [Deployment](/text/deployment)
+## <TextLink title="Deployment" path='/text/deployment' />
 How to deploy a prodev site.
 
-## [Development](/text/development)
+## <TextLink title="Development" path='/text/development' />
 How to develop a prodev site.
