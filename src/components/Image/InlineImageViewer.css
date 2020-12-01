@@ -23,7 +23,7 @@
     color:yellow;
     z-index: 1;
     top: 0;
-    left: 0;
+    right: 0;
     padding: 10px;
     background: rgba(10, 10, 10, 0.5);
     box-sizing: border-box;
@@ -45,7 +45,7 @@
     color:yellow;
     z-index: 1;
     top: 0;
-    left: 0;
+    right: 0;
     padding: 10px;
     background: rgba(10, 10, 10, 0.5);
     box-sizing: border-box;
