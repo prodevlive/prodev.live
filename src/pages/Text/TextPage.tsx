@@ -1,5 +1,4 @@
-/* eslint-disable import/no-webpack-loader-syntax */
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { Page } from 'components/Page/Page';
 import { Body } from 'components/Page/Body';
 import { Main } from 'components/Page/Main';
@@ -13,9 +12,11 @@ import { TextContent } from './Content/TextContent';
 
 export const TextPage: FunctionComponent = () => {
   const history = useHistory();
-  if (history.location.pathname === TextPaths.Text){
-    history.push(TextPaths.Overview);
-  }
+  useEffect(()=>{
+    if (history.location.pathname === TextPaths.Text){
+      history.push(TextPaths.Overview);
+    }    
+  }, [history, history.location.pathname]);
   return (
     <Page>
       <Header />

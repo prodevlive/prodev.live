@@ -11,8 +11,6 @@ export const Body: FunctionComponent = ({ children }) => {
       body: {
         flexGrow: 1,
         display: 'flex',
-        margin: '1px',
-        border: '1px solid yellow',
       },
     }),
   );

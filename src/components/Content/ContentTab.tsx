@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -12,18 +12,31 @@ export const ContentTab: FunctionComponent<ContentTabProps> = ({
   content,
 }: ContentTabProps) => {
   const history = useHistory();
-  const [value, setValue] = React.useState(history.location.pathname);
-  const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
-    setValue(newValue);
-    history.push(newValue);
-  };
-  if (!content || !content.contents || !content.contents.length){
+  const { pathname } = history.location;
+  const [ path, setPath ] = React.useState('');
+  useEffect(() => {
+    if (!content || !content.contents || !content.contents.length) {
+      return;
+    }
+    if (!content.contents.find(c => c.path === pathname)){
+      history.push(content.contents[0].path);
+      return;
+    }
+    if (path !== pathname){
+      setPath(pathname);
+    }
+  }, [content, history, path, pathname]);
+  if (!path || !content || !content.contents || !content.contents.length) {
     return null;
   }
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
+    setPath(newValue);
+    history.push(newValue);
+  };
   return (
     <div>
       <Tabs
-        value={value}
+        value={path}
         indicatorColor="primary"
         textColor="primary"
         onChange={handleChange}

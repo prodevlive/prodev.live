@@ -10,8 +10,6 @@ export const Main: FunctionComponent = ({ children }) => {
     createStyles({
       main: {
         flexGrow: 1,
-        margin: '1px',
-        border: '1px solid black',
       },
     }),
   );

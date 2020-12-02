@@ -58,7 +58,7 @@ Using default provider  awscloudformation
 ? Please choose the profile you want to use: [AWS PROFILE]
 ```
 
-<InlineImage alt="Amplify Init" asset="AmplifyInit" clip />
+<TextImage alt="Amplify Init" asset="AmplifyInit" clip />
 
 ## authentication
 

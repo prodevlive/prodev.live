@@ -1,5 +1,4 @@
-/* eslint-disable import/no-webpack-loader-syntax */
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { Page } from 'components/Page/Page';
 import { Body } from 'components/Page/Body';
 import { Main } from 'components/Page/Main';
@@ -13,9 +12,11 @@ import { HomeContent } from './Content/HomeContent';
 
 export const HomePage: FunctionComponent = () => {
   const history = useHistory();
-  if (history.location.pathname === HomePaths.Home){
-    history.push(HomePaths.Creators);
-  }
+  useEffect(() => {
+    if (history.location.pathname === HomePaths.Home){
+      history.push(HomePaths.Creators);
+    }
+  }, [history, history.location.pathname]);
   return (
     <Page>
       <Header />
