@@ -29,18 +29,21 @@ export const TextImage: FunctionComponent<TextImageProps> = ({
     className = !fullSize ? 'text-image-clip' : 'text-image-show';
   }
   return (
-    <div
-      className={className}
-      onClick={handleClick}
-      onKeyDown={handleClick}
-      role="button"
-      tabIndex={0}
-    >
-      <img
-        title={title}
-        src={src}
-        alt={alt || title}
-      />
+    <div className="text-image-div">
+      <div className="text-image-caption">{title}</div>
+      <div
+        className={className}
+        onClick={handleClick}
+        onKeyDown={handleClick}
+        role="button"
+        tabIndex={0}
+      >
+        <img
+          title={title}
+          src={src}
+          alt={alt || title}
+        />
+      </div>      
     </div>
   );
 };
