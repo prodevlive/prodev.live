@@ -16,3 +16,6 @@ Setup AWS Amplify in your environment.
 
 ## <TextLink title="Setup Project" path='/text/deployment/amplify-project' />
 Setup AWS Amplify for your project.
+
+
+https://docs.aws.amazon.com/amplify/latest/userguide/redirects.html#redirects-for-single-page-web-apps-spa
