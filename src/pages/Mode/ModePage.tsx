@@ -7,8 +7,7 @@ import { Sidebar } from 'components/Page/Sidebar/Sidebar';
 import { useHistory } from 'react-router-dom';
 import { ModeFooter } from './ModeFooter';
 import { ModePaths } from './ModeEnum';
-
-const pdenv = process.env.REACT_APP_PRODEV_ENV as string;
+import { ModePlatform } from './ModePlatform';
 
 export const ModePage: FunctionComponent = () => {
   const history = useHistory();
@@ -23,8 +22,7 @@ export const ModePage: FunctionComponent = () => {
       <Body>
         <Sidebar />
         <Main>
-          <div>settings</div>
-          <div>{`env: ${pdenv}`}</div>
+          <ModePlatform />
         </Main>
       </Body>
       <ModeFooter />
