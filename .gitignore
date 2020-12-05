@@ -45,3 +45,5 @@ amplify/.config/project-config.json
 amplify/backend/backend-config.json
 amplify/backend/tags.json
 .env
+amplify/backend/auth/prodevlive28c2de67/parameters.json
+amplify/backend/auth/prodevlive28c2de67/prodevlive28c2de67-cloudformation-template.yml
